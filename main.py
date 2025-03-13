@@ -24,11 +24,11 @@ class LinkedList:
         self.print_recursion(node.next)
 
 if __name__ == "__main__":
-    print(fibonacci(5))
+    print(fibonacci(6))"""
 
-    LinkedList = LinkedList(None)"""
-
-"""#LINKED LIST
+    #LinkedList = LinkedList(None)
+"""
+#LINKED LIST
 class Node:
     def __init__(self, data):
         self.data = data
@@ -69,35 +69,60 @@ if __name__ == "__main__":
 
     print("Linked List: ")
     linklist.start_recursion_traversal()
-    linklist.print_recursion()"""
-
-#TREE
+    linklist.print_recursion()
+"""
+# TREE
 class TreeNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-#In-Order
+# In-Order Traversal
 def inorder_traversal(root):
     if root:
         inorder_traversal(root.left)
         print(root.value, end=" ")
         inorder_traversal(root.right)
 
-#Pre-Order - first visit
+# Pre-Order Traversal
 def preorder_traversal(root):
     if root:
         print(root.value, end=" ")
         preorder_traversal(root.left)
         preorder_traversal(root.right)
 
-#Post-Order - last visit
+# Post-Order Traversal
 def postorder_traversal(root):
     if root:
         postorder_traversal(root.left)
         postorder_traversal(root.right)
         print(root.value, end=" ")
+
+# Reverse Traversals
+def reversed_inorder_traversal(root):
+    if root:
+        reversed_inorder_traversal(root.right)
+        print(root.value, end=" ")
+        reversed_inorder_traversal(root.left)
+
+def reversed_preorder_traversal(root):
+    if root:
+        print(root.value, end=" ")
+        reversed_preorder_traversal(root.right)
+        reversed_preorder_traversal(root.left)
+
+def reversed_postorder_traversal(root):
+    if root:
+        reversed_postorder_traversal(root.right)
+        reversed_postorder_traversal(root.left)
+        print(root.value, end=" ")
+
+def swap_subtrees(root):
+    if root:
+        root.left, root.right = root.right, root.left
+        swap_subtrees(root.left)
+        swap_subtrees(root.right)
 
 root = TreeNode(1)
 root.left = TreeNode(2)
@@ -107,9 +132,19 @@ root.left.left = TreeNode(4)
 root.right.left = TreeNode(6)
 root.right.right = TreeNode(7)
 
-print("In-Order Traversal: ")
+print("In-Order Traversal:")
 inorder_traversal(root)
-print("\nPre-Order Traversal: ")
+print("\nPre-Order Traversal:")
 preorder_traversal(root)
-print("\nPost-Order Traversal: ")
+print("\nPost-Order Traversal:")
+postorder_traversal(root)
+
+print("\n\nSwapping Subtrees...")
+swap_subtrees(root)
+
+print("\nInorder Traversal After Swap:")
+inorder_traversal(root)
+print("\nPreorder Traversal After Swap:")
+preorder_traversal(root)
+print("\nPostorder Traversal After Swap:")
 postorder_traversal(root)
